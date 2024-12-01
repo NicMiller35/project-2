@@ -41,7 +41,13 @@ const getJokes = async (keyword: string) => {
           throw new Error('invalid API response, check the network tab');
         }
         // console.log('Data:', data);
-        return data;
+        const jokes = data.jokes.map((joke: any) => {
+          return {
+            id: joke.id,
+            joke: joke.joke
+          };
+        });
+        return jokes;
       } catch (err) {
         // console.log('an error occurred', err);
         return [];

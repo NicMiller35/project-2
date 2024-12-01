@@ -11,7 +11,7 @@ const login = async (userInfo: UserLogin) => {
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
+            // const errorData = await response.json();
             throw new Error('Error: ${errorData.message}');
 
         }
