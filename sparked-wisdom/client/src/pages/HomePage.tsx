@@ -10,11 +10,13 @@ const HomePage = () => {
     const fetchQuote = async () => {
         const data: Quote[] = await getQuotes();
         setQuote(data);
+        setJoke([]);
     };
 
     const fetchJoke = async () => {
         const data: Joke[] = await getJokes('dogs');
         setJoke(data);
+        setQuote([]);
     };
 
     return (

@@ -23,7 +23,7 @@ const Login = () => {
             const response = await login(loginData);
             Auth.login(response.data.token);
         } catch (error) {
-            console.error('Login error:', err);
+            console.error('Login error:', error);
         }
     };
     return (
@@ -49,5 +49,5 @@ const Login = () => {
         </div>
         
       )
-
-}
+};
+export default Login;
