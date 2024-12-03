@@ -26,28 +26,64 @@ const Login = () => {
             console.error('Login error:', error);
         }
     };
-    return (
-        <div className='container'>
-          <form className='form' onSubmit={handleSubmit}>
-            <h1>Login</h1>
-            <label >Username</label>
-            <input 
-              type='text'
-              name='username'
-              value={loginData.username || ''}
-              onChange={handleChange}
-            />
-          <label>Password</label>
-            <input 
-              type='password'
-              name='password'
-              value={loginData.password || ''}
-              onChange={handleChange}
-            />
-            <button type='submit'>Submit Form</button>
-          </form>
+    
+        return (
+          <div>
+            <div>
+      <div className= 'lanheader'>
+      <h1>Welcome to Sparked Wisdom!</h1>
+      </div>
+      <div className= 'lanp'>
+      <p>Sparked Wisdom is a platform for discovering inspirational quotes. We hope you find the wisdom you need to spark your day! If you would like to contribute to our collection of quotes, please sign up or log in.
+        </p>
         </div>
+    </div>
+          <div className="container mt-5">
+            <form className="p-4 border rounded shadow" onSubmit={handleSubmit}>
+              <h1 className="text-center mb-4">Login</h1>
+              
+              
+              <div className="mb-3">
+                <label htmlFor="username" className="form-label">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  className="form-control"
+                  value={loginData.username || ''}
+                  onChange={handleChange}
+                  placeholder="Enter your username"
+                />
+              </div>
         
-      )
+              
+              <div className="mb-3">
+                <label htmlFor="password" className="form-label">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  className="form-control"
+                  value={loginData.password || ''}
+                  onChange={handleChange}
+                  placeholder="Enter your password"
+                />
+              </div>
+        
+              
+              <div className="text-center">
+                <button type="submit" className="btn btn-primary w-100">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+          </div>
+        );
+        
 };
 export default Login;

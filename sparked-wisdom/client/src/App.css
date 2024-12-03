@@ -40,3 +40,37 @@
 .read-the-docs {
   color: #888;
 }
+
+/*background color for the body*/
+body {
+  background-color: #708B75; 
+  margin: 0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+/*background color for the navbar*/
+.custom-navbar {
+  background-color: #444B6E; 
+}
+
+/*color for the navbar links*/
+.custom-navbar a {
+  color: #F8F991;
+}
+
+.lanheader{
+  color: #F8F991;
+  justify-content: center;
+}
+
+.lanp{
+  color: #F8F991;
+}
+
+.form-label{
+  color: #F8F991;
+}
+
+h1{
+  color: #F8F991;
+}

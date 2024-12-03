@@ -1,27 +1,70 @@
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import auth from '../utils/auth';
 
 const Navbar = () => {
-  const currentPage = useLocation().pathname;
+  const [loginCheck, setLoginCheck] = useState(false);
+
+  const checkLogin = () => {
+    if (auth.loggedIn()) {
+      setLoginCheck(true);
+    }
+  };
+
+  useEffect(() => {
+    console.log(loginCheck);
+    checkLogin();
+  }, [loginCheck]);
 
   return (
-    <nav>
-      <ul className="nav">
-        <li className="nav-item">
-          <Link to="/" className={currentPage === "/" ? "nav-link active" : "nav-link"}>
-            Home
-          </Link>
-        </li>
-        {/* <li className="nav-item">
-          <Link
-            to="/SavedCandidates"
-            className={currentPage === "/SavedCandidates" ? "nav-link active" : "nav-link"}
-          >
-            Saved Candidates
-          </Link>
-        </li> */}
-      </ul>
+    <nav className="navbar navbar-expand-lg custom-navbar">
+      <div className="container-fluid">
+        
+        <Link className="navbar-brand" to="/">
+          Sparked Wisdom
+        </Link>
+
+        
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            {!loginCheck ? (
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <button
+                  className="btn btn-link nav-link"
+                  type="button"
+                  onClick={() => {
+                    auth.logout();
+                  }}
+                >
+                  Logout
+                </button>
+              </li>
+            )}
+          </ul>
+        </div>
+      </div>
     </nav>
-  )
+  );
 };
 
 export default Navbar;
+
