@@ -47,7 +47,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/savedquotes">
-                Saved quotes
+                Quotes
               </Link>
             </li>
             {!loginCheck ? (
