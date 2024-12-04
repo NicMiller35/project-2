@@ -1,5 +1,5 @@
 import { Model, DataTypes, Optional } from 'sequelize';
-import sequelize from '../config/database';
+import sequelize from '../config/connections.js';
 
 // Define an interface for the attributes (fields) of Quote
 interface QuoteAttributes {

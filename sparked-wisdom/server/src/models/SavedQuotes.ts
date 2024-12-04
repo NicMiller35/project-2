@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
-import sequelize from '../config/database';
-import User from './user';
-import Quote from './quote';
+import sequelize from '../config/connections.js';
+import User from './users.js';
+import Quote from './Quote.js';
 
 class SavedQuote extends Model {
   saved_quote_id!: number;
