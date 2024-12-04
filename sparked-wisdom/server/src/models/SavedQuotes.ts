@@ -1,35 +1,59 @@
-import { Model, DataTypes } from 'sequelize';
-import sequelize from '../config/connections.js';
-import User from './users.js';
-import Quote from './Quote.js';
+import { Model, DataTypes, Optional, Sequelize } from 'sequelize';
+import { User } from './users.js';
+//import { Quote } from './Quote.js';
 
-class SavedQuote extends Model {
-  saved_quote_id!: number;
-  saved_at!: Date;
+interface SavedQuoteAttributes {
+  quote_id: number;
+  content: string;
+  author: string;
 }
 
-SavedQuote.init(
-  {
-    saved_quote_id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
+interface SavedQuoteCreationAttributes extends Optional<SavedQuoteAttributes, 'quote_id'> {}
+
+export class SavedQuote extends Model<SavedQuoteAttributes, SavedQuoteCreationAttributes> implements SavedQuoteAttributes {
+  quote_id!: number;
+  content!: string;
+  author!: string;
+
+  public readonly assignedUser?: User;
+
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
+}
+
+
+//export function SavedQuoteFactory(sequelize: Sequelize): typeof SavedQuote {
+export function SavedQuoteFactory(sequelize: Sequelize): typeof SavedQuote {
+  SavedQuote.init(
+    {
+        quote_id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      content: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      author: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
-    saved_at: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
-  },
-  {
-    sequelize,
-    modelName: 'SavedQuote',
-    tableName: 'saved_quotes',
-    timestamps: false,
-  }
-);
+    {
+      sequelize,
+      modelName: 'SavedQuote',
+      tableName: 'saved_quotes',
+      timestamps: false,
+    }
+  );
+
+  return SavedQuote;
+}
 
 // Define relationships
-User.belongsToMany(Quote, { through: SavedQuote });
-Quote.belongsToMany(User, { through: SavedQuote });
+//User.belongsToMany(Quote, { through: SavedQuote });
+//Quote.belongsToMany(User, { through: SavedQuote });
 
-export default SavedQuote;
+
+
