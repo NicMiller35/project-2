@@ -1,31 +1,55 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Quote from '../utils/interfaces/Quote.interface';
-import Joke from '../utils/interfaces/Joke.interface';
-import { getQuotes, getJokes } from '../api/API';
+// import Joke from '../utils/interfaces/Joke.interface';
+import { getQuotes } from '../api/API'; //, getJokes
+import CarouselComponent from '../components/Carousel';
+
 
 const HomePage = () => {
-    const [quote, setQuote] = useState<Quote[] | null>([]);
-    const [joke, setJoke] = useState<Joke[] | null>([]);
+    const [quotes, setQuotes] = useState<Quote[]>([]);
+    // const [jokes, setJokes] = useState<Joke[] | null>([]);
+    // const [currentQuote, setQuote] = useState<Quote>({
+    //     a: '',
+    //     h: '',
+    //     i: '',
+    //     q: '',
+    // });
 
     const fetchQuote = async () => {
         const data: Quote[] = await getQuotes();
-        setQuote(data);
-        setJoke([]);
+        setQuotes(data);
+        // setJokes([]);
     };
 
-    const fetchJoke = async () => {
-        const data: Joke[] = await getJokes('dogs');
-        setJoke(data);
-        setQuote([]);
-    };
+    // const fetchJoke = async () => {
+    //     const data: Joke[] = await getJokes('dogs');
+    //     setJokes(data);
+    //     setQuotes([]);
+    // };
+
+    useEffect(() => {
+        fetchQuote();
+    }, []);
+
+
+    // const addToSavedQuotes = () => {
+    //     let parsedQuotes: Quote[] = [];
+    //     const savedQuotes = localStorage.getItem('quotes');
+    //     if (typeof savedQuotes === 'string') {
+    //         parsedQuotes = JSON.parse(savedQuotes);
+    //     }
+    //     parsedQuotes.push(currentQuote);
+    //     localStorage.setItem('quotes', JSON.stringify(parsedQuotes));
+    // }
 
     return (
         <div>
-            <h1>Home Page</h1>
-            <button onClick={fetchQuote}>Fetch Quote</button>
-            <button onClick={fetchJoke}>Fetch Joke</button>
+            <CarouselComponent quotes={quotes}/>
+            {/* <h1>Home Page</h1>
+            <button type="button" onClick={fetchQuote}>Fetch Quote</button>
+            <button type="button" onClick={fetchJoke}>Fetch Joke</button>
             <div>
-                {quote && quote.map((q, index) => (
+                {quotes && quotes.map((q, index) => (
                     <blockquote key={index}>
                         <p>{q.q}</p>
                         <footer>{q.a}</footer>
@@ -33,10 +57,10 @@ const HomePage = () => {
                 ))}
             </div>
             <div>
-                {joke && joke.map((j, index) => (
+                {jokes && jokes.map((j, index) => (
                     <p key={index}>{j.joke}</p>
                 ))}
-            </div>
+            </div> */}
         </div>
     );
 };
