@@ -22,7 +22,7 @@ export class SavedQuote extends Model<SavedQuoteAttributes, SavedQuoteCreationAt
 }
 
 
-//export function SavedQuoteFactory(sequelize: Sequelize): typeof SavedQuote {
+
 export function SavedQuoteFactory(sequelize: Sequelize): typeof SavedQuote {
   SavedQuote.init(
     {
