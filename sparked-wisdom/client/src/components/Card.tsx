@@ -5,11 +5,14 @@ import Quote from '../utils/interfaces/Quote.interface';
 type CardProps = {
     currentQuote: Quote;
     addToSavedQuotes?: (() => void) | null;
+    onItemClick?: ((quote: Quote) => void) | null;
 }
 
 const CardComponent = ({
     currentQuote,
-    addToSavedQuotes}: CardProps) => {
+    addToSavedQuotes,
+    onItemClick
+}: CardProps) => {
     return (
         <Card >
             <Card.Img variant="top" src={currentQuote.i? currentQuote.i : ''} />
@@ -17,9 +20,11 @@ const CardComponent = ({
                 <Card.Title>Card Title</Card.Title>
                 <Card.Text>
                     {currentQuote.q}
-                    <footer>{' -- ' + currentQuote.a}</footer>
+                    <br />{' -- ' + currentQuote.a}
                 </Card.Text>
-                <Button variant="primary" onClick={() => addToSavedQuotes?.()}>Save</Button>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Button variant="primary" onClick={() => {addToSavedQuotes?.(); onItemClick?.(currentQuote)}}>Save Quote</Button>
+                </div>
             </Card.Body>
         </Card>
     );
