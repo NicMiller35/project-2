@@ -8,12 +8,16 @@ import CarouselComponent from '../components/Carousel';
 const HomePage = () => {
     const [quotes, setQuotes] = useState<Quote[]>([]);
     // const [jokes, setJokes] = useState<Joke[] | null>([]);
-    // const [currentQuote, setQuote] = useState<Quote>({
-    //     a: '',
-    //     h: '',
-    //     i: '',
-    //     q: '',
-    // });
+    const [currentQuote, setCurrentQuote] = useState<Quote>({
+        a: '',
+        h: '',
+        i: '',
+        q: '',
+    });
+
+    const handleSaveQuote = (quote: Quote) => {
+        setCurrentQuote(quote);
+    }
 
     const fetchQuote = async () => {
         const data: Quote[] = await getQuotes();
@@ -32,19 +36,20 @@ const HomePage = () => {
     }, []);
 
 
-    // const addToSavedQuotes = () => {
-    //     let parsedQuotes: Quote[] = [];
-    //     const savedQuotes = localStorage.getItem('quotes');
-    //     if (typeof savedQuotes === 'string') {
-    //         parsedQuotes = JSON.parse(savedQuotes);
-    //     }
-    //     parsedQuotes.push(currentQuote);
-    //     localStorage.setItem('quotes', JSON.stringify(parsedQuotes));
-    // }
+    const addToSavedQuotes = () => {
+        let parsedQuotes: Quote[] = [];
+        const savedQuotes = localStorage.getItem('quotes');
+        if (typeof savedQuotes === 'string') {
+            parsedQuotes = JSON.parse(savedQuotes);
+        }
+        parsedQuotes.push(currentQuote);
+        localStorage.setItem('quotes', JSON.stringify(parsedQuotes));
+        alert('Quote saved!');
+    }
 
     return (
         <div>
-            <CarouselComponent quotes={quotes}/>
+            <CarouselComponent quotes={quotes} addToSavedQuotes={addToSavedQuotes} onItemClick={handleSaveQuote}/>
             {/* <h1>Home Page</h1>
             <button type="button" onClick={fetchQuote}>Fetch Quote</button>
             <button type="button" onClick={fetchJoke}>Fetch Joke</button>
