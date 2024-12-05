@@ -1,4 +1,4 @@
-import { SavedQuote } from "../models/SavedQuotes.js";
+import { SavedQuote } from "../models/index.js";
 
 export const seedSavedQuotes = async () => {
   await SavedQuote.bulkCreate([

@@ -1,4 +1,4 @@
-import {Quote} from '../models/Quote.js';
+import {Quote} from '../models/index.js';
 
 export const seedQuotes = async () => {
   await Quote.bulkCreate([
@@ -10,5 +10,5 @@ export const seedQuotes = async () => {
       content: 'The best time to plant a tree was 20 years ago. The second best time is now.',
       author: 'Chinese Proverb'
     },
-], { individualHooks: true });
+]);
 };

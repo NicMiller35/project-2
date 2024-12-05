@@ -17,8 +17,7 @@ export class SavedQuote extends Model<SavedQuoteAttributes, SavedQuoteCreationAt
 
   public readonly assignedUser?: User;
 
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  
 }
 
 

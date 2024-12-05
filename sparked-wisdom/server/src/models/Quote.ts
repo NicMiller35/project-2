@@ -18,8 +18,7 @@ export class Quote extends Model<QuoteAttributes, QuoteCreationAttributes> imple
 
   public readonly assignedUser?: User;
 
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  
 }
 
 export function QuoteFactory(sequelize: Sequelize): typeof Quote {
