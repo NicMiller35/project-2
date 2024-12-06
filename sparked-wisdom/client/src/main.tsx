@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage.tsx';
 import ErrorPage from './pages/ErrorPage.tsx';
 import Login from './pages/Login.tsx';
 import SavedQuotes from './pages/SavedQuotes.tsx';
+import UserForm from './pages/UserForm.tsx';
 
 
 const router = createBrowserRouter([
@@ -18,16 +19,20 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Login />,
+        element: <HomePage />,
       },
       {
-        path: '/home',
-        element: <HomePage />
+        path: '/login',
+        element: <Login />
       },
       {
-        path: '/saved',
+        path: '/savedquotes',
         element: <SavedQuotes />
-      }
+      },
+      {
+        path: '/userfrorm',
+        element: <UserForm />
+      },
     ],
   },
 ]);
