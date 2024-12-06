@@ -19,6 +19,7 @@ const UserForm = () => {
       return data;
     } catch (err) {
       console.error('Failed to create user', err);
+      throw err;
     }
   };
 
@@ -29,12 +30,23 @@ const UserForm = () => {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    if (newUser) {
-      const data = createNewUser(newUser);
-      console.log(data);
-      navigate('/');
+    if (newUser && newUser.username && newUser.password) {
+      try{
+        const data = await createNewUser(newUser);
+        console.log('User created:', data);
+        navigate('/'); 
+      
+    } catch (error) {
+      console.error('Error creating user:', error);
     }
-  };
+  } else {
+    console.log('Username and password are required.');
+  }
+};
+      
+
+  
+    
 
   const toggleFormVisibility = () => {
     setIsFormVisible(!isFormVisible);
@@ -90,9 +102,11 @@ const UserForm = () => {
               <label>New User</label>
               <input
                 type="text"
+                id= "username"
                 name="username"
                 value={newUser?.username || ''}
                 onChange={handleChange}
+                required
                 style={{ marginBottom: '10px', width: '100%', padding: '8px' }}
               />
               <label>New Password</label>
