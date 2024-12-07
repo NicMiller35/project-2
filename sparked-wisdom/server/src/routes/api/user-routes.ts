@@ -34,7 +34,7 @@ router.get('/:id', async (req: Request, res: Response) => {
 });
 
 // POST /users - Create a new user
-router.post('/', async (req: Request, res: Response) => {
+/*router.post('/', async (req: Request, res: Response) => {
   const { username, password } = req.body;
   try {
     const newUser = await User.create({ username, password });
@@ -42,7 +42,7 @@ router.post('/', async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(400).json({ message: error.message });
   }
-});
+});*/
 
 // PUT /users/:id - Update a user by id
 router.put('/:id', async (req: Request, res: Response) => {

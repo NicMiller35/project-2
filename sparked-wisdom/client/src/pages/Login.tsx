@@ -1,5 +1,5 @@
 import {useState, FormEvent, ChangeEvent} from 'react';
- import UserForm from '../pages/UserForm';
+import UserForm from '../pages/UserForm';
 import Auth from '../utils/auth';
 import {login} from '../api/authAPI';
 
