@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         element: <HomePage />
       },
       {
-        path: '/saved',
+        path: '/savedquotes',
         element: <SavedQuotes />
       }
     ],

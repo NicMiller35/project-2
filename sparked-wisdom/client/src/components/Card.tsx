@@ -10,7 +10,6 @@ type CardProps = {
 
 const CardComponent = ({
     currentQuote,
-    addToSavedQuotes,
     onItemClick
 }: CardProps) => {
     return (
@@ -23,7 +22,7 @@ const CardComponent = ({
                     <br />{' -- ' + currentQuote.a}
                 </Card.Text>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button variant="primary" onClick={() => {addToSavedQuotes?.(); onItemClick?.(currentQuote)}}>Save Quote</Button>
+                    <Button variant="primary" onClick={() => onItemClick?.(currentQuote)}>Save Quote</Button>
                 </div>
             </Card.Body>
         </Card>
