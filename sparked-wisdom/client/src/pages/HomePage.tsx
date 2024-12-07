@@ -8,21 +8,23 @@ import CarouselComponent from '../components/Carousel';
 const HomePage = () => {
     const [quotes, setQuotes] = useState<Quote[]>([]);
     // const [jokes, setJokes] = useState<Joke[] | null>([]);
-    const [currentQuote, setCurrentQuote] = useState<Quote>({
-        a: '',
-        h: '',
-        i: '',
-        q: '',
-    });
 
-    const handleSaveQuote = (quote: Quote) => {
-        setCurrentQuote(quote);
-    }
+    const fetchQuotes = async () => {
+        try {
+            const data: Quote[] = await getQuotes();
+            console.log('Data:', data);
+            setQuotes(data);
+        } catch (err) {
+            console.log('an error occurred', err);
+        }
+    };
 
-    const fetchQuote = async () => {
-        const data: Quote[] = await getQuotes();
-        setQuotes(data);
-        // setJokes([]);
+    const handleRemoveQuote = (quote: Quote) => {
+        let quoteList: Quote[] = quotes;
+        quoteList = quotes.filter((q) => q.q !== quote.q);
+        if (quoteList.length !== 0) {
+            setQuotes(quoteList);
+        }
     };
 
     // const fetchJoke = async () => {
@@ -32,40 +34,13 @@ const HomePage = () => {
     // };
 
     useEffect(() => {
-        fetchQuote();
+        fetchQuotes();
     }, []);
 
 
-    const addToSavedQuotes = () => {
-        let parsedQuotes: Quote[] = [];
-        const savedQuotes = localStorage.getItem('quotes');
-        if (typeof savedQuotes === 'string') {
-            parsedQuotes = JSON.parse(savedQuotes);
-        }
-        parsedQuotes.push(currentQuote);
-        localStorage.setItem('quotes', JSON.stringify(parsedQuotes));
-        alert('Quote saved!');
-    }
-
     return (
         <div>
-            <CarouselComponent quotes={quotes} addToSavedQuotes={addToSavedQuotes} onItemClick={handleSaveQuote}/>
-            {/* <h1>Home Page</h1>
-            <button type="button" onClick={fetchQuote}>Fetch Quote</button>
-            <button type="button" onClick={fetchJoke}>Fetch Joke</button>
-            <div>
-                {quotes && quotes.map((q, index) => (
-                    <blockquote key={index}>
-                        <p>{q.q}</p>
-                        <footer>{q.a}</footer>
-                    </blockquote>
-                ))}
-            </div>
-            <div>
-                {jokes && jokes.map((j, index) => (
-                    <p key={index}>{j.joke}</p>
-                ))}
-            </div> */}
+            <CarouselComponent quotes={quotes} handleRemoveQuote={handleRemoveQuote}/>
         </div>
     );
 };
