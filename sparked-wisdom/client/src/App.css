@@ -48,9 +48,11 @@ body {
   font-family: Arial, sans-serif;
   min-height: 100vh;
   margin-top: 100px;
-  display: flex;
+  padding: 50px;
+   font-family: 'Budge', 'cursive';
+  /*display: flex;
   justify-content: center; /* Horizontally center */
-  align-items: center; /* Vertically center */
+ /* align-items: center;*/ /* Vertically center */
 }
 
 /*background color for the navbar*/
@@ -61,7 +63,14 @@ body {
   top: 0; 
   left: 0; 
   z-index: 1000; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(32, 30, 30, 0.1);
+  padding: 10px;
+   font-family: 'Budge', 'cursive';
+}
+.navbar-brand {
+  font-family: 'Budge', 'cursive';
+  font-size: 2em;
+
 }
 
 /*color for the navbar links*/
@@ -83,6 +92,7 @@ body {
 .lanp{
   color: #F8F991;
   text-align: center;
+  font-size: 1.5em;;
 }
 
 .logo-image{
@@ -111,4 +121,33 @@ h1{
 
 .btn-primary {
   background-color: #F8F991; /* Slightly darker yellow */
+}
+
+.btn-primary:hover {
+  background-color: #F8F991; /* Slightly darker yellow */
+}
+
+.quoteLi {
+ 
+  justify-content: center;
+  padding: 10px;
+  border-bottom: 1px solid #F8F991;
+  width: 100%;
+  
+}
+
+.quoteCard {
+  background-color: #444B6E; /* Dark blue */
+  color: #F8F991;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.card {
+  background-color: #708B75;
 }
