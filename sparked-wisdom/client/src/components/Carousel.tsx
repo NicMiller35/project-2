@@ -40,7 +40,7 @@ const CarouselComponent: React.FC<CarouselProps> = ({ quotes, handleRemoveQuote 
 
   return (
     <div style={{ display: 'block', width: 700, padding: 30 }}>
-      <h4>Quotes</h4>
+      <h4>Find your inspiration here! </h4>
       <Carousel 
       interval={null} 
       activeIndex={index} 

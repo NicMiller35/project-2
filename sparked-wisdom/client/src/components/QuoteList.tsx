@@ -15,7 +15,7 @@ const QuoteList = ({
   removeFromStorage
 } : QuoteListProps) => {
   return (
-    <>
+    <div className= 'quoteLi '>
       <h1>Saved Quotes</h1>
       <table className='table'>
         <thead>
@@ -42,7 +42,7 @@ const QuoteList = ({
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 

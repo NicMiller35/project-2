@@ -39,7 +39,7 @@ const HomePage = () => {
 
 
     return (
-        <div>
+        <div className= 'quoteCard'>
             <CarouselComponent quotes={quotes} handleRemoveQuote={handleRemoveQuote}/>
         </div>
     );
