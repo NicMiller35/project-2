@@ -31,11 +31,10 @@ const Login = () => {
           <div>
             <div>
       <div className= 'lanheader'>
-      <h1>Welcome to Sparked Wisdom!</h1>
       </div>
       <div className= 'lanp'>
-      <p>Sparked Wisdom is a platform for discovering inspirational quotes. We hope you find the wisdom you need to spark your day! If you would like to contribute to our collection of quotes, please sign up or log in.
-        </p>
+      <h1>Welcome to Sparked Wisdom!</h1>
+      <img src="https://previews.123rf.com/images/irozvodovskyi/irozvodovskyi2101/irozvodovskyi210100103/162371027-vector-lamp-bulb-icon-on-white-isolate.jpg" alt="Light bulb icon representing Sparked Wisdom"  className="logo-image"/>
         </div>
     </div>
           <div className="container mt-5">

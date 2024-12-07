@@ -45,26 +45,57 @@
 body {
   background-color: #708B75; 
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   min-height: 100vh;
+
+
 }
+.contianer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.p-4 {
+  max-width: 400px;
+  background-color: #444B6E; /* Dark blue */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft black shadow */
+  position: absolute;
+  bottom: 50px;
+    right:0;
+    left:0;
+  margin-left:auto; 
+  margin-right:auto;
+
+}
+
 /*background color for the navbar*/
 .custom-navbar {
   background-color: #444B6E; 
+  
 }
 
 /*color for the navbar links*/
 .custom-navbar a {
   color: #F8F991;
+
 }
 
 .lanheader{
   color: #F8F991;
-  justify-content: center;
+  text-align: center;
 }
 
 .lanp{
   color: #F8F991;
+  text-align: center;
+}
+
+.logo-image{
+  width: 10%;
+  height: 10%;
 }
 
 .form-label{
@@ -73,4 +104,19 @@ body {
 
 h1{
   color: #F8F991;
+}
+
+.btn-primary {
+  background-color: #F8F991;
+  color: #444B6E;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-primary {
+  background-color: #F8F991; /* Slightly darker yellow */
 }
