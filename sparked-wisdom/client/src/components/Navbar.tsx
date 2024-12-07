@@ -53,7 +53,7 @@ const Navbar = () => {
             {!loginCheck ? (
               <li className="nav-item">
                 <Link className="nav-link" to="/login">
-                  Login
+                  Account
                 </Link>
               </li>
             ) : (
