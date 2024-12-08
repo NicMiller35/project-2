@@ -1,7 +1,6 @@
 import type React from "react";
 import { useState, useEffect } from 'react';
 import type Quote from "../utils/interfaces/Quote.interface";
-// import type Quote from "../interfaces/Quote.interface";
 import QuoteList from "../components/QuoteList";
 
 const SavedQuotes = () => {
@@ -32,7 +31,7 @@ const SavedQuotes = () => {
     }, []);
 
     return (
-        <>
+        <div className= 'quoteTable'>
             {(!quotes?.length || quotes?.length === 0) ? (
                 <h1 style={{ margin: '16px 0' }}>No Quotes Found</h1>
             ) : (
@@ -40,7 +39,7 @@ const SavedQuotes = () => {
             <QuoteList 
             quotes={quotes} removeFromStorage={removeFromStorage} />
             )}
-        </>
+        </div>
     );
 };
 

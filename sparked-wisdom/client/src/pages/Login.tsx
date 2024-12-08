@@ -33,6 +33,9 @@ const Login = () => {
       <div className= 'lanheader'>
       <h1>Welcome to Sparked Wisdom!</h1>
       </div>
+      <div className = 'lanp'>
+      <p>Where you can find the inspiration you need to get through the day! Please sign in or create an account to join our daily quotes for you.</p>
+      </div>
       <div className= 'lanp'>
       <img src="https://previews.123rf.com/images/irozvodovskyi/irozvodovskyi2101/irozvodovskyi210100103/162371027-vector-lamp-bulb-icon-on-white-isolate.jpg" alt="Light bulb icon representing Sparked Wisdom"  className="logo-image"/>
         </div>

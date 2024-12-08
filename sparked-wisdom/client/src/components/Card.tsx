@@ -13,10 +13,10 @@ const CardComponent = ({
     onItemClick
 }: CardProps) => {
     return (
-        <Card >
+        <Card className= 'card'>
             <Card.Img variant="top" src={currentQuote.i? currentQuote.i : ''} />
             <Card.Body>
-                <Card.Title>Card Title</Card.Title>
+                <Card.Title></Card.Title>
                 <Card.Text>
                     {currentQuote.q}
                     <br />{' -- ' + currentQuote.a}
