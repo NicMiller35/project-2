@@ -1,12 +1,12 @@
-/*import dotenv from 'dotenv';
-dotenv.config();*/
-
-import sequelize from '../config/connections.js';
+import dotenv from 'dotenv';
+dotenv.config();
+import { Sequelize } from 'sequelize';
+//import sequelize from '../config/connections.js';
 import { UserFactory } from './users.js';
 import { SavedQuoteFactory } from './SavedQuotes.js';
 import { QuoteFactory } from './Quote.js';
 
-/*const sequelize = process.env.DB_URL
+const sequelize = process.env.DB_URL
   ? new Sequelize(process.env.DB_URL)
   : new Sequelize(process.env.DB_NAME || '', process.env.DB_USER || '', process.env.DB_PASSWORD, {
       host: 'localhost',
@@ -14,7 +14,7 @@ import { QuoteFactory } from './Quote.js';
       dialectOptions: {
         decimalNumbers: true,
       },
-    });*/
+    });
 
 
 const User = UserFactory(sequelize);
