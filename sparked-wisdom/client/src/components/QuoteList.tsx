@@ -4,15 +4,15 @@ import type Quote from '../utils/interfaces/Quote.interface';
 
 type QuoteListProps = {
   quotes: Quote[];
-  removeFromStorage: ((
+  deleteFromSavedQuotes: ((
       e: React.MouseEvent<SVGElement>,
-      q: string | null
+      id: number
     ) => void) | null;
 }
 
 const QuoteList = ({
   quotes,
-  removeFromStorage
+  deleteFromSavedQuotes
 } : QuoteListProps) => {
   return (
     <div className= 'quoteLi '>
@@ -28,14 +28,16 @@ const QuoteList = ({
         </thead>
         <tbody>
           {quotes.map(quote => (
-            <tr key={quote.q}>
+            <tr key={quote.quote_id}>
               <td style={{ textAlign: 'center' }}><img src={quote.i ?? ''} alt={quote.a ?? 'No author'} width="50" /></td>
               <td>{quote.q}</td>
               <td>{quote.a}</td>
                 <td style={{ textAlign: 'center' }}>
                 <IoIosRemoveCircle
                   style={{ fontSize: '50px', cursor: 'pointer', backgroundColor: 'black', fill: 'red', borderRadius: '50%' }}
-                  onClick={(e) => removeFromStorage && removeFromStorage(e, quote.q)}
+                  onClick={(e) => deleteFromSavedQuotes 
+                    && typeof quote.quote_id === 'number'
+                    && deleteFromSavedQuotes(e, quote.quote_id)}
                 />
                 </td>
             </tr>
