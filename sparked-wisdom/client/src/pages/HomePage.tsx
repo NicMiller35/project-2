@@ -11,7 +11,7 @@ const HomePage = () => {
 
     const fetchQuotes = async () => {
         try {
-            const data: Quote[] = await getQuotes();
+            const data: any[] = await getQuotes();
             console.log('Data:', data);
             setQuotes(data);
         } catch (err) {
