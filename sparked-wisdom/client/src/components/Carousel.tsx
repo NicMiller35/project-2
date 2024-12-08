@@ -1,5 +1,6 @@
 import Carousel from 'react-bootstrap/Carousel';
 import Quote from '../utils/interfaces/Quote.interface';
+import { createQuote } from '../api/QuoteAPI';
 // import Joke from '../utils/interfaces/Joke.interface';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
@@ -27,16 +28,15 @@ const CarouselComponent: React.FC<CarouselProps> = ({ quotes, handleRemoveQuote 
     setIndex(selectedIndex);
   }
 
-  const addToSavedQuotes = (quote: Quote) => {
-    let parsedQuotes: Quote[] = [];
-    const savedQuotes = localStorage.getItem('quotes');
-    if (typeof savedQuotes === 'string') {
-        parsedQuotes = JSON.parse(savedQuotes);
+  
+  const addToSavedQuotes = async (quote: Quote) => {
+    try {
+      const data = await createQuote(quote);
+      return data;
+    } catch (err) {
+      console.error('Failed to add to saved quotes', err);
     }
-    parsedQuotes.push(quote);
-    localStorage.setItem('quotes', JSON.stringify(parsedQuotes));
-    alert('Quote saved!');
-}
+  };
 
   return (
     <div style={{ display: 'block', width: 700, padding: 30 }}>

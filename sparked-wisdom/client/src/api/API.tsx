@@ -31,11 +31,11 @@ const getInspirationImg = async () => {
       }
 };
 
-const getJokes = async (keyword: string) => {
+const getJoke = async (keyword: string) => {
     const apiKey = import.meta.env.VITE_HUMOR_API_KEY;
     
     try {
-        const response = await fetch(`https://api.humorapi.com/jokes/search?api-key=${apiKey}&number=20&keywords=${keyword}`);
+        const response = await fetch(`https://api.humorapi.com/jokes/search?api-key=${apiKey}&number=1&keywords=${keyword}`);
         const data = await response.json();
         if (!response.ok) {
           throw new Error('invalid API response, check the network tab');
@@ -54,4 +54,4 @@ const getJokes = async (keyword: string) => {
       }
 };
 
-export { getQuotes, getInspirationImg, getJokes };
+export { getQuotes, getInspirationImg, getJoke };
