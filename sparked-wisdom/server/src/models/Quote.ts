@@ -6,6 +6,7 @@ interface QuoteAttributes {
   quote_id: number;
   content: string;
   author: string;
+  img_url: string;
 }
 
 // Optional attributes interface for creation
@@ -15,6 +16,7 @@ export class Quote extends Model<QuoteAttributes, QuoteCreationAttributes> imple
   quote_id!: number;
   content!: string;
   author!: string;
+  img_url!: string;
 
   public readonly assignedUser?: User;
 
@@ -34,6 +36,10 @@ export function QuoteFactory(sequelize: Sequelize): typeof Quote {
         allowNull: false,
       },
       author: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      img_url: {
         type: DataTypes.STRING,
         allowNull: false,
       },

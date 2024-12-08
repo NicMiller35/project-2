@@ -1,34 +1,44 @@
 import type React from "react";
 import { useState, useEffect } from 'react';
 import type Quote from "../utils/interfaces/Quote.interface";
-// import type Quote from "../interfaces/Quote.interface";
 import QuoteList from "../components/QuoteList";
+import { retrieveAllQuotes, deleteQuote } from "../api/QuoteAPI";
 
 const SavedQuotes = () => {
     const [quotes, setQuotes] = useState<Quote[]>([]);
 
-    const removeFromStorage = (
+    const fetchQuotes = async () => {
+        try {
+            const data = await retrieveAllQuotes();
+            console.log('Data from fetchQuotes:', data);
+            const mappedData: Quote[] = data.map((quote: any) => ({
+                quote_id: quote.quote_id,
+                q: quote.content,
+                a: quote.author,
+                i: quote.img_url,
+                h: ''
+            }));
+            setQuotes(mappedData);
+        } catch (err) {
+            console.log('Error from data retrieval:', err);
+        }
+    };
+
+    const deleteFromSavedQuotes = async (
         e: React.MouseEvent<SVGElement>,
-        q: string | null
+        id: number,
     ) => {
         e.preventDefault();
-        let parsedQuotes: Quote[] = [];
-        const savedQuotes = localStorage.getItem('quotes');
-        if(typeof savedQuotes === 'string') {
-            parsedQuotes = JSON.parse(savedQuotes);
+        try {
+            await deleteQuote(id);
+            fetchQuotes();
+        } catch (err) {
+            console.log('Error from Quote Deletion:', err);
         }
-        parsedQuotes = parsedQuotes.filter(
-            (quote) => quote.q !== q
-        );
-        setQuotes(parsedQuotes);
-        localStorage.setItem('quotes', JSON.stringify(parsedQuotes));
     };
 
     useEffect(() => {
-        const savedQuotes = localStorage.getItem('quotes');
-        if (savedQuotes) {
-            setQuotes(JSON.parse(savedQuotes));
-        }
+        fetchQuotes();
     }, []);
 
     return (
@@ -36,9 +46,9 @@ const SavedQuotes = () => {
             {(!quotes?.length || quotes?.length === 0) ? (
                 <h1 style={{ margin: '16px 0' }}>No Quotes Found</h1>
             ) : (
-            
-            <QuoteList 
-            quotes={quotes} removeFromStorage={removeFromStorage} />
+
+                <QuoteList
+                    quotes={quotes} deleteFromSavedQuotes={deleteFromSavedQuotes} />
             )}
         </>
     );
