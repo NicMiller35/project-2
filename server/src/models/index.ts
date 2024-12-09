@@ -24,6 +24,5 @@ const SavedQuote = SavedQuoteFactory(sequelize);
 User.hasMany(SavedQuote, { foreignKey: 'user_id' });
 SavedQuote.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
 
-export { User, Quote, SavedQuote };
+export { Sequelize, User, Quote, SavedQuote };
 
-//DONT FORGET IF RENDER DOES NOT WORK LOOK AT KANBAN MODELS INDEX AND COPY THE CONST SEQUALIZE FUNCTION
