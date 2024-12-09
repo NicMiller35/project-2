@@ -24,5 +24,5 @@ const SavedQuote = SavedQuoteFactory(sequelize);
 User.hasMany(SavedQuote, { foreignKey: 'user_id' });
 SavedQuote.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
 
-export { Sequelize, User, Quote, SavedQuote };
+export { sequelize, User, Quote, SavedQuote };
 
