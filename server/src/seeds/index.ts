@@ -1,4 +1,4 @@
-import sequelize from '../config/connections.js';
+import {sequelize} from '../models/index.js';
 import {seedQuotes} from './quote-seeds.js';
 import { seedSavedQuotes } from './saved-quote-seeds.js';
 import { seedUsers } from './user-seeds.js';
